@@ -28,11 +28,20 @@ st.markdown("""
         }
 
         /* Chat input */
-        [data-testid="stChatInput"] {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
+        /* Chat messages */
+        [data-testid="stChatMessage"] {
+        background-color: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        color: #c9d1d9 !important;
         }
+
+/* Fix user message text color */
+[data-testid="stChatMessage"] p {
+    color: #c9d1d9 !important;
+}
 
         /* Chat messages */
         [data-testid="stChatMessage"] {
