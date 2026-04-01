@@ -15,7 +15,7 @@ payments contains payment transaction history.
 
 @st.cache_resource
 def load_database():
-    conn = sqlite3.connect(":memory:")
+    conn = sqlite3.connect(":memory:", check_same_thread=False)
     df = pd.read_csv("sql_bot_test.csv")
     df.columns = [c.strip().lower() for c in df.columns]
     df.to_sql("user_loan", conn, if_exists="replace", index=False)
