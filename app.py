@@ -58,12 +58,12 @@ st.markdown("""
 
         /* Spinner */
         .stSpinner {
-            color: #58a6ff !important;
+            color: #a371f7 !important;
         }
 
         /* Title */
         h1 {
-            color: #58a6ff !important;
+            color: #a371f7 !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -73,7 +73,7 @@ with st.sidebar:
     st.markdown("""
         <div style='text-align: center; padding: 20px 0;'>
             <div style='font-size: 48px;'>🤖</div>
-            <h2 style='color: #58a6ff; margin: 0;'>SQL Bot</h2>
+            <h2 style='color: #a371f7; margin: 0;'>SQL Bot</h2>
             <p style='color: #8b949e; font-size: 13px;'>Powered by Claude AI</p>
         </div>
         <hr style='border-color: #30363d;'>
