@@ -4,6 +4,94 @@ import pandas as pd
 import anthropic
 import os
 
+# --- Page Config ---
+st.set_page_config(
+    page_title="SQL Bot",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# --- Custom CSS for Dark Modern Theme ---
+st.markdown("""
+    <style>
+        /* Main background */
+        .stApp {
+            background-color: #0e1117;
+            color: #ffffff;
+        }
+
+        /* Sidebar */
+        [data-testid="stSidebar"] {
+            background-color: #161b22;
+            border-right: 1px solid #30363d;
+        }
+
+        /* Chat input */
+        [data-testid="stChatInput"] {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+        }
+
+        /* Chat messages */
+        [data-testid="stChatMessage"] {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Code blocks */
+        .stCode {
+            background-color: #0d1117 !important;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+        }
+
+        /* Dataframe */
+        [data-testid="stDataFrame"] {
+            border: 1px solid #30363d;
+            border-radius: 8px;
+        }
+
+        /* Spinner */
+        .stSpinner {
+            color: #58a6ff !important;
+        }
+
+        /* Title */
+        h1 {
+            color: #58a6ff !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- Sidebar ---
+with st.sidebar:
+    st.markdown("""
+        <div style='text-align: center; padding: 20px 0;'>
+            <div style='font-size: 48px;'>🤖</div>
+            <h2 style='color: #58a6ff; margin: 0;'>SQL Bot</h2>
+            <p style='color: #8b949e; font-size: 13px;'>Powered by Claude AI</p>
+        </div>
+        <hr style='border-color: #30363d;'>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <div style='padding: 10px 0;'>
+            <p style='color: #8b949e; font-size: 13px;'>📂 <b style='color:#58a6ff'>Connected Tables</b></p>
+            <p style='color: #c9d1d9; font-size: 13px;'>• user_loan</p>
+            <p style='color: #c9d1d9; font-size: 13px;'>• payments</p>
+        </div>
+        <hr style='border-color: #30363d;'>
+    """, unsafe_allow_html=True)
+
+    if st.button("🗑️ Clear Chat", use_container_width=True):
+        st.session_state.messages = []
+        st.rerun()
+
 # --- API Client ---
 client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
